@@ -1,55 +1,37 @@
-import { loadGetInitialProps } from "next/dist/shared/lib/utils";
-import { useRouter } from "next/router";
-import PropertyID from "../[propertyID]";
+import { Fragment, useState } from "react";
+import Listing from "../components/listing";
 
-export default function handler() {
-  const router = useRouter;
+function Listings(props) {
+  const { data } = props;
+  return (
+    <Fragment>
+      {data.map((property) => (
+        <Listing
+          key={property.id}
+          imageURL={property.imageURL}
+          Postcode={property.Postcode}
+          Price={property.price}
+        />
+      ))}
+    </Fragment>
+  );
+}
+export default Listings;
 
-  function showDetailsHandler(id) {
-    router.push("/" + id);
+export async function getStaticProps(context) {
+  const res = await fetch("http://localhost:3000/api/listings-data");
+  const packet = await res.json();
+  const data = packet["data"];
+
+  if (!data) {
+    return {
+      redirect: {
+        destination: "/",
+      },
+    };
   }
 
-  const getproperties = [
-    {
-      id: "1",
-      imageURL: "https://someimageurl.com",
-      price: "£67,789",
-      Postcode: "ajejrfr",
-    },
-    {
-      id: "2",
-      imageURL: "https://someimageurl.com",
-      price: "£67,789",
-      Postcode: "ajejrfr",
-    },
-    {
-      id: "3",
-      imageURL: "https://someimageurl.com",
-      price: "£67,789",
-      Postcode: "ajejrfr",
-    },
-    {
-      id: "4",
-      imageURL: "https://someimageurl.com",
-      price: "£67,789",
-      Postcode: "ajejrfr",
-    },
-  ];
-
-  const showlist = getproperties.map((property) => (
-    <ul key={property.id}>
-      <li>
-        <a href={showDetailsHandler(property.id)}>{property.imageURL}</a>
-      </li>
-      <li>{property.price}</li>
-      <li>{property.Postcode}</li>
-    </ul>
-  ));
-
-  return (
-    <div>
-      <h1>Listings Page</h1>
-      {showlist}
-    </div>
-  );
+  return {
+    props: { data },
+  };
 }

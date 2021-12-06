@@ -9,7 +9,6 @@ variable "AWS_SECRET_ACCESS_KEY" {
   description = "This is the Admin AWS_SECRET_ACCESS_KEY"
   type        = string
 }
-
 variable "region" {
   type    = string
   default = "eu-west-1"

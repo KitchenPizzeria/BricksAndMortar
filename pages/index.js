@@ -1,8 +1,10 @@
 import { Fragment, useState } from "react";
 import Map from "./components/map";
-import Searchbar from "./components/Searchbar";
+import SearchbarPane from "./components/SearchbarPane";
+import ResultsPane from "./components/ResultsPane";
+import EducationPane from "./components/EducationPane";
 
-export default function Home() {
+export default function Home(props) {
   const [SearchButtonPressed, setSearchButtonPressed] = useState(false);
   const [PostcodeInputted, setPostcodeInputted] = useState(null);
 
@@ -11,11 +13,14 @@ export default function Home() {
     setPostcodeInputted(event.target.value);
   };
 
-  return <Map />;
-  {
-    /* <Searchbar
-        TextfieldChangeHandler={SearchbarOnChangeHandler}
-        SubmitButtonHandler={SearchbarOnSubmitButtonClick}
-      /> */
-  }
+  return (
+    <div className="parent">
+      {/* <Map /> */}
+      <SearchbarPane />
+      <div className="middle-band">
+        <ResultsPane data={props.data} />
+        <EducationPane />
+      </div>
+    </div>
+  );
 }

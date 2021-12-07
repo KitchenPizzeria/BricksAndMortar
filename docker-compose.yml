@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  flask-scraper:
+    image: flask:1.1
+    ports:
+      - 5000:5000
+  next_app:
+    image: bricks:0.9
+    ports:
+      - 3000:3000
+    depends_on:
+      - flask_scraper

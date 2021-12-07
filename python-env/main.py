@@ -16,8 +16,9 @@ def getProperties():
     for count, property in enumerate(properties):
         price = property.find(
             "span", class_="propertyCard-priceValue").get_text()
-        address = property.address.contents[1]['content']
+        addr = property.address.contents[1]['content']
         # price[1:-4] will remove '£' sign and 'pcm'
-        data.append([count, sites[0], address, price[1:-4]])
+        data.append(
+            {"count": count, "site": sites[0], "address": addr, "price": price[1:-4]})
 
     return data

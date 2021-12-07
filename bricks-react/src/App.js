@@ -15,7 +15,7 @@ export default function Home(props) {
 
   return (
     <div className="parent">
-      {/* <Map /> */}
+      <Map />
       <SearchbarPane />
       <div className="middle-band">
         <ResultsPane data={props.data} />

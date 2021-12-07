@@ -1,7 +1,8 @@
-.next
-.vscode
+
 node_modules/
 terraform/
+.gitignore
+.README.md
 .eslint*
 **/__pycache__
 **/.classpath

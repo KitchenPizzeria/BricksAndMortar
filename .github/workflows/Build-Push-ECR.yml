@@ -15,6 +15,7 @@ jobs:
   
   Configure_And_Login_With_Credentials:
     runs-on: ubuntu-20.04
+    needs: build
     steps:
       
     - name: Configure AWS credentials
@@ -30,6 +31,7 @@ jobs:
 
   Build_Push_Images:
     runs-on: ubuntu-20.04
+    needs: Configure_And_Login_With_Credentials
     steps:
     - name: Extract branch name
       shell: bash

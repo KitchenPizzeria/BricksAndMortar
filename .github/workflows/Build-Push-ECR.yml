@@ -40,7 +40,7 @@ jobs:
 
     - name: Build, tag, and push image to Amazon ECR
       env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REGISTRY: ${{ steps.Configure_And_Login_With_Credentials.login-ecr.outputs.registry }}
         ECR_REPOSITORY: bricksandmortar
         IMAGE_TAG: ${{ steps.extract_branch.outputs.branch }}
         RUN_NUMBER: ${{ github.run_number }}

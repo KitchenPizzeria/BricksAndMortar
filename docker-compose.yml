@@ -2,11 +2,11 @@ version: "3"
 
 services:
   flask-scraper:
-    image: 603825719481.dkr.ecr.eu-west-1.amazonaws.com/bricksandmortar:python-develop
+    image: 603825719481.dkr.ecr.eu-west-1.amazonaws.com/bricksandmortar:python-develop-8
     ports:
       - 5000:5000
   next_app:
-    image: 603825719481.dkr.ecr.eu-west-1.amazonaws.com/bricksandmortar:react-develop
+    image: 603825719481.dkr.ecr.eu-west-1.amazonaws.com/bricksandmortar:react-develop-8
     ports:
       - 3000:3000
     depends_on:

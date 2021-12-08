@@ -1,4 +1,5 @@
 terraform {
+<<<<<<< HEAD
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -70,3 +71,11 @@ resource "aws_key_pair" "deployer" {
 output "serverip" {
   value = aws_instance.app.public_ip
 }
+=======
+  required_version = ">= 0.12"
+}
+
+provider "aws" {
+    region = "eu-west-1"
+}
+>>>>>>> fa0ed83a788d0f1606581458f6c398014b23620a

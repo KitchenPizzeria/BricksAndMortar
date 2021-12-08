@@ -1,5 +1,4 @@
 terraform {
-<<<<<<< HEAD
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -11,8 +10,8 @@ terraform {
 provider "aws" {
   region = var.region
 }
-resource "aws_instance" "ec2_example" {
 
+resource "aws_instance" "main" {
   ami                    = "ami-0767046d1677be5a0"
   instance_type          = "t2.micro"
   key_name               = "aws_key"
@@ -62,7 +61,6 @@ resource "aws_security_group" "main" {
   ]
 }
 
-
 resource "aws_key_pair" "deployer" {
   key_name   = "aws_key"
   public_key = ""
@@ -71,11 +69,3 @@ resource "aws_key_pair" "deployer" {
 output "serverip" {
   value = aws_instance.app.public_ip
 }
-=======
-  required_version = ">= 0.12"
-}
-
-provider "aws" {
-    region = "eu-west-1"
-}
->>>>>>> fa0ed83a788d0f1606581458f6c398014b23620a

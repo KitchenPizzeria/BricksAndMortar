@@ -1,12 +1,10 @@
 variable "AWS_ACCESS_KEY" {
-  default     = "ASIAYZFWRJC4TCGWFR4N"
-  description = "This is the Admin AWS_ACCESS_KEY"
+  description = "AWS_ACCESS_KEY for BricksAndMortar User"
   type        = string
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
-  default     = "+4tCoR+kbEwB0XkYgDhEMtqMTuQ2uI0JDsc1MiEm"
-  description = "This is the Admin AWS_SECRET_ACCESS_KEY"
+  description = "AWS_SECRET_ACCESS_KEY for BricksAndMortar User"
   type        = string
 }
 variable "region" {

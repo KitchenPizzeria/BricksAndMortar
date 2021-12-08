@@ -1,0 +1,39 @@
+name: Build-Push-ECR
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-south-1
+    
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
+    - name: Build, tag, and push images to Amazon ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: bricksandmortar
+        IMAGE_TAG: ${{ steps.extract_branch.outputs.branch }}
+      run: |
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:react/$IMAGE_TAG ./bricks-react
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:python/$IMAGE_TAG ./python-env
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:react/$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:python/$IMAGE_TAG

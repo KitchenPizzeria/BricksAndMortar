@@ -38,11 +38,10 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: bricksandmortar
-        IMAGE_TAG: nodejs_demo_image
-        RUN_NUMBER: ${{ steps.extract_branch.outputs.branch }}
+        IMAGE_TAG: ${{ steps.extract_branch.outputs.branch }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG-$RUN_NUMBER ./bricks-react
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG-$RUN_NUMBER
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG ./bricks-react
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG
 
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG-$RUN_NUMBER. ./python-env
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG-$RUN_NUMBER
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG ./python-env
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG

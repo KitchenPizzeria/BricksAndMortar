@@ -1,4 +1,4 @@
 bricks-react/node_modules
 python-env/__pycache__
 python-env/env
-terraform/
+terraform

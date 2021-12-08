@@ -45,7 +45,7 @@ jobs:
         IMAGE_TAG: ${{ steps.extract_branch.outputs.branch }}
         RUN_NUMBER: ${{ github.run_number }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:react$IMAGE_TAG-$RUN_NUMBER ./bricks-react
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:python$IMAGE_TAG$RUN_NUMBER ./python-env
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:react$IMAGE_TAG$RUN_NUMBER
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:python$IMAGE_TAG$RUN_NUMBER
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG ./bricks-react
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG ./python-env
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG

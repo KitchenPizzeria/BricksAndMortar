@@ -34,7 +34,7 @@ jobs:
         ECR_REPOSITORY: bricksandmortar
         IMAGE_TAG: ${{ steps.extract_branch.outputs.branch }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:react/$IMAGE_TAG ./bricks-react
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:python/$IMAGE_TAG ./python-env
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:react/$IMAGE_TAG
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:python/$IMAGE_TAG
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG ./bricks-react
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG ./python-env
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG

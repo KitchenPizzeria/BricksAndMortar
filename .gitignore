@@ -2,3 +2,7 @@ bricks-react/node_modules
 python-env/__pycache__
 python-env/env
 terraform
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

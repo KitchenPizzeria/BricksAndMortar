@@ -43,6 +43,5 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG-$RUN_NUMBER ./bricks-react
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:react-$IMAGE_TAG-$RUN_NUMBER
-
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG-$RUN_NUMBER ./python-env
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:python-$IMAGE_TAG-$RUN_NUMBER

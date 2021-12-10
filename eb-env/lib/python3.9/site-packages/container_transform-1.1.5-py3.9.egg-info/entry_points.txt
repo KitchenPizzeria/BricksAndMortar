@@ -1,0 +1,4 @@
+
+        [console_scripts]
+        container-transform=container_transform.client:transform
+    
